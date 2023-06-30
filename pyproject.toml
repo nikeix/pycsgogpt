@@ -1,0 +1,31 @@
+
+
+[tool.poetry]
+name = "pycsgogpt"
+version = "0.1.0"
+description = "CSGO Chatbot using OpenAI GPT-3.5 Turbo."
+authors = ["Aviv <4440524+nikeix@users.noreply.github.com>"]
+license = "MIT"
+keywords = ["csgo", "chatbot", "openai", "gpt"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.7.1"
+openai = "^0.27.8"
+telnetlib3 = "^2.0.2"
+typer = "^0.9.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+pycsgogpt = "pycsgogpt.__main__:main"
