@@ -2,7 +2,7 @@
 
 [tool.poetry]
 name = "pycsgogpt"
-version = "0.1.0"
+version = "0.1.1"
 description = "CSGO Chatbot using OpenAI GPT-3.5 Turbo."
 authors = ["Aviv <4440524+nikeix@users.noreply.github.com>"]
 license = "MIT"
