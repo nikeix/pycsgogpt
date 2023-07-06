@@ -19,3 +19,7 @@ def entry(player_name: str, openapi_key: str, telnet_port: int = typer.Option(21
 def main():
     app.command()(entry)
     app()
+    
+    
+if __name__ == "__main__":
+    main()
