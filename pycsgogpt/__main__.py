@@ -13,6 +13,7 @@ def entry(player_name: str, openapi_key: str, telnet_port: int = typer.Option(21
         print("Exiting...")
     except ConnectionRefusedError:
         print(f"Connection refused. Make sure you add `-netconport {telnet_port}` to the CSGO server launch options.")
+        print("Is csgo running?")
     except ConnectionAbortedError:
         print("Bye!")
 

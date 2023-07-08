@@ -2,6 +2,9 @@
 
 **pycsgogpt** is a CSGO chatbot powered by OpenAI GPT-3.5 Turbo. It connects to a CSGO client via Telnet and uses the GPT-3.5 Turbo model to generate responses based on incoming messages from other players. The chatbot provides an interactive and fun experience by simulating human-like conversations in the game.
 
+![Alt text](image.png)
+
+
 ## Installation
 
 ```bash
