@@ -10,6 +10,9 @@ DEAD_MSG = "*DEAD*"
 MAX_CHAT_SIZE = 128
 MIN_CHAT_SIZE = 2
 
+T_CHAT_PREFIX = "(Terrorist)"
+CT_CHAT_PREFIX = "(Counter-Terrorist)"
+
 class CSGOChatBot:
     def __init__(self, telnet_port: int, player_name: str):
         self.telnet_port = telnet_port
@@ -48,7 +51,8 @@ class CSGOChatBot:
 
     def process_message(self, t: telnetlib.Telnet, output: str) -> None:
         player_info, player_msg = output.split(MSG_STRING, maxsplit=1)
-        player_name = player_info.strip().replace(DEAD_MSG, "")
+        is_team = T_CHAT_PREFIX in player_info or CT_CHAT_PREFIX in player_info
+        player_name = player_info.strip().replace(DEAD_MSG, "").replace(T_CHAT_PREFIX, "").replace(CT_CHAT_PREFIX, "")
 
         if self.player_name in player_name:
             return
@@ -57,13 +61,16 @@ class CSGOChatBot:
 
         response = self.get_response_for_message(player_name, player_msg.strip())
         if response:
-            t.write(f"say {response}\n".encode("utf-8"))
+            say_cmd = "say_team" if is_team else "say"
+            t.write(f"{say_cmd} {response}\n".encode("utf-8"))
 
     def loop(self) -> None:
         t = self.connect_to_server()
 
         while True:
-            output = t.read_until(b"\n").decode("utf-8")
+            output = t.read_until(b"\n", timeout=0.1).decode("utf-8")
+            if not output:
+                continue
 
             if MSG_STRING not in output:
                 continue
