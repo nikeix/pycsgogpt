@@ -3,8 +3,14 @@ from pycsgogpt.csgo_chatbot import CSGOChatBot
 
 app = typer.Typer()
 
-def entry(player_name: str, openapi_key: str, telnet_port: int = typer.Option(21234, help="The telnet port for the CSGO server.")) -> None:
-    chat_bot = CSGOChatBot(telnet_port, player_name)
+def entry(
+    player_name: str,
+    openapi_key: str,
+    telnet_port: int = typer.Option(21234,
+    help="The telnet port for the CSGO server."),
+    chat_history_size: int = 20,
+) -> None:
+    chat_bot = CSGOChatBot(telnet_port, player_name, chat_history_size)
     chat_bot.set_openai_key(openapi_key)
 
     try:

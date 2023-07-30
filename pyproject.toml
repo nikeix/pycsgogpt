@@ -2,7 +2,7 @@
 
 [tool.poetry]
 name = "pycsgogpt"
-version = "0.1.5"
+version = "0.1.6"
 description = "CSGO Chatbot using OpenAI GPT-3.5 Turbo."
 authors = ["Aviv <4440524+nikeix@users.noreply.github.com>"]
 license = "MIT"
@@ -23,6 +23,7 @@ python = "^3.7.1"
 openai = "^0.27.8"
 telnetlib3 = "^2.0.2"
 typer = "^0.9.0"
+backoff = "^2.2.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
